@@ -1,0 +1,14 @@
+.word {
+    font-size: 1.5em;
+    align-self: stretch;        
+}
+
+.word__firstName {
+    font-family: 'Lora', serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.word__lastName {
+    font-family: 'EB Garamond', serif; 
+}

@@ -1,0 +1,23 @@
+.App-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.App-header {
+  background-color: #1c3a72;
+  padding: 5px 20px;
+  color: white;
+  text-align: right;
+}
+
+.App-title {
+  font-size: 1.2em;
+  font-family: monospace;
+  font-weight: normal;
+  margin: 0;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

@@ -1,0 +1,22 @@
+.column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 15px;
+}
+.radio {
+    display: inline-block;
+    margin-right: 15px;
+}
+input {
+    visibility:hidden;
+}
+label {
+    cursor: pointer;
+}
+input:not(:checked) + .item {
+    opacity: 0.5;
+}
+input:not(:checked) + .none-checked {
+    opacity: 1;
+}
