@@ -1,5 +1,6 @@
 {
-  "name": "globomantics",
+  "homepage" : "http://myname.github.io/myapp",
+  "name": "niche-team-name-game",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
