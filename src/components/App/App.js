@@ -11,9 +11,11 @@ class App extends Component {
     super(props)
     this.state = {
       activePeople: this.getNewActivePeople(),
+      selections: this.initializeSelections(), 
     }
     this.getNewActivePeople = this.getNewActivePeople.bind(this)
-    this.shuffleActivePeople = this.shuffleActivePeople.bind(this)
+    this.initializeSelections = this.initializeSelections.bind(this)
+    this.handleSelection = this.handleSelection.bind(this)
   }
   
   getNewActivePeople() {
@@ -21,13 +23,22 @@ class App extends Component {
     return shuffledTeam.slice(0, PEOPLE_PER_SHUFFLE) //get sub-array of first n elements AFTER shuffle
   }
 
-  shuffleActivePeople() {
-    const shuffledActivePeople = this.state.activePeople.concat().sort(() => .5 - Math.random())
-    return shuffledActivePeople
+  handleSelection(selection, type) {
+    const stateObject = this.state
+    stateObject.selections[type] = selection
+    this.setState(stateObject)
+    console.log(this.state.selections)
+  }
+
+  initializeSelections() {
+    return {
+      photo: null,
+      firstName: null,
+      lastName: null,
+    }
   }
 
   render() {
-    console.log(this.getNewActivePeople())
     return (
       <div className="App">
         <header className="App-header">
@@ -36,17 +47,20 @@ class App extends Component {
         <div className="App-container">
           <Column
             type="photo"
-            people={ this.shuffleActivePeople() }
+            people={ this.state.activePeople }
+            onChange={ this.handleSelection } 
             />
           <Divider/>
           <Column
             type="firstName"
-            people={ this.shuffleActivePeople() }
+            people={ this.state.activePeople }
+            onChange={ this.handleSelection } 
             />
           <Divider/>
           <Column
             type="lastName"
-            people={ this.shuffleActivePeople() }
+            people={ this.state.activePeople }
+            onChange={ this.handleSelection } 
             />
         </div>
       </div>

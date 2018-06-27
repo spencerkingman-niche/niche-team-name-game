@@ -10,18 +10,26 @@ class Column extends Component {
         super(props) 
         this.state = {
             selectedOption: '',
+            shuffledActivePeople: this.shuffleActivePeople(),
         }
         this.handleOptionChange = this.handleOptionChange.bind(this)
+        this.shuffleActivePeople = this.shuffleActivePeople.bind(this)
     }
 
     handleOptionChange(e) {
         this.setState({
             selectedOption: e.target.value
-        });
+        })
+        this.props.onChange(e.target.value, this.props.type)
+    }
+
+    shuffleActivePeople() {
+        const shuffledActivePeople = this.props.people.concat().sort(() => .5 - Math.random())
+        return shuffledActivePeople
     }
 
     render() {
-        const { type, people } = this.props
+        const { type } = this.props
 
         const itemComponents = {
             photo: Photo,
@@ -31,10 +39,9 @@ class Column extends Component {
         }
     
         const Item = itemComponents[type]
-        console.log(this.state.selectedOption)
         return (
                 <form className={ `column column__${type}`}>
-                    { people.map(person => 
+                    { this.state.shuffledActivePeople.map(person => 
                         <div 
                             key={ person.src }
                             className="radio" >
@@ -59,6 +66,7 @@ class Column extends Component {
 
 Column.propTypes = {
     type: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
     people: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 }
  
