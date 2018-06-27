@@ -24,12 +24,23 @@ class Column extends Component {
     }
 
     shuffleActivePeople() {
+        this.setState({
+            selectedOption: '',
+        })
         const shuffledActivePeople = this.props.people.concat().sort(() => .5 - Math.random())
         return shuffledActivePeople
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.people.length === 0) {
+            this.setState({
+                shuffledActivePeople: this.shuffleActivePeople(),
+            })
+        }
+    }
+
     render() {
-        const { type } = this.props
+        const { type, people } = this.props
 
         const itemComponents = {
             photo: Photo,
@@ -41,23 +52,27 @@ class Column extends Component {
         const Item = itemComponents[type]
         return (
                 <form className={ `column column__${type}`}>
-                    { this.state.shuffledActivePeople.map(person => 
-                        <div 
-                            key={ person.src }
-                            className="radio" >
-                            <label>
-                                <input 
-                                    type="radio"
-                                    value={ person.src }
-                                    checked={ this.state.selectedOption === person.src } 
-                                    onChange={ this.handleOptionChange } />
-                                <Item 
-                                    person={ person }
-                                    type={ type } 
-                                    noneChecked={ this.state.selectedOption === '' }/>
-                            </label>
-                        </div>
-                    )}
+                    { this.state.shuffledActivePeople.map(person => {
+                        if (people.indexOf(person) !== -1) {
+                            return (
+                                <div 
+                                    key={ person.src }
+                                    className="radio" >
+                                    <label>
+                                        <input 
+                                            type="radio"
+                                            value={ person.src }
+                                            checked={ this.state.selectedOption === person.src } 
+                                            onChange={ this.handleOptionChange } />
+                                        <Item 
+                                            person={ person }
+                                            type={ type } 
+                                            noneChecked={ this.state.selectedOption === '' }/>
+                                    </label>
+                                </div>
+                            )
+                        }
+                    })}
                 </form>
         )
     }

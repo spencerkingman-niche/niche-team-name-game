@@ -4,22 +4,36 @@ import Column from '../../components/Column/Column'
 import Divider from '../../components/Divider/Divider'
 import './App.css';
 
-const PEOPLE_PER_SHUFFLE = 4
+const PEOPLE_PER_SHUFFLE = 7
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      activePeople: this.getNewActivePeople(),
+      stillToBeMatchedPeople: TEAM,
+      activePeople: [],
       selections: this.initializeSelections(), 
     }
+    this.checkForMatch = this.checkForMatch.bind(this)
     this.getNewActivePeople = this.getNewActivePeople.bind(this)
-    this.initializeSelections = this.initializeSelections.bind(this)
     this.handleSelection = this.handleSelection.bind(this)
+    this.initializeSelections = this.initializeSelections.bind(this)
+    this.removeMatch = this.removeMatch.bind(this)
   }
   
+  checkForMatch() {
+    const { selections } = this.state
+    const potentialMatch = selections.photo
+    for (let category in selections) {
+      if(selections[category] !== potentialMatch) return false;
+    }
+    return true 
+  }
+
   getNewActivePeople() {
-    const shuffledTeam = TEAM.sort(() => .5 - Math.random()) // shuffle  
+    const { stillToBeMatchedPeople } = this.state
+    const shuffledTeam = stillToBeMatchedPeople.concat().sort(() => .5 - Math.random()) // shuffle  
+    console.log(shuffledTeam)
     return shuffledTeam.slice(0, PEOPLE_PER_SHUFFLE) //get sub-array of first n elements AFTER shuffle
   }
 
@@ -27,7 +41,20 @@ class App extends Component {
     const stateObject = this.state
     stateObject.selections[type] = selection
     this.setState(stateObject)
-    console.log(this.state.selections)
+    if (this.checkForMatch()) {
+      this.removeMatch(selection)
+    }
+  }
+
+  componentDidMount() {
+    this.setState({activePeople:this.getNewActivePeople()})
+  }
+
+  componentDidUpdate() {
+    console.log(this.state.activePeople.length)
+    if (this.state.activePeople.length === 0) {
+      this.setState({activePeople: this.getNewActivePeople()})
+    }
   }
 
   initializeSelections() {
@@ -36,6 +63,15 @@ class App extends Component {
       firstName: null,
       lastName: null,
     }
+  }
+
+  removeMatch(match) {
+    const { activePeople, stillToBeMatchedPeople } = this.state
+    this.setState({
+      activePeople: activePeople.filter(activePerson => activePerson.src !== match),
+      stillToBeMatchedPeople: stillToBeMatchedPeople.filter(activePerson => activePerson.src !== match)
+    })
+    this.initializeSelections()
   }
 
   render() {
