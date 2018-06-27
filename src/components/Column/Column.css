@@ -27,3 +27,9 @@ input:checked + .word {
     font-weight: bold;
     text-shadow: 2px 2px 2px #e8e8e8;
 }
+input:hover + .photo {
+    box-shadow: 0px 0px 0px 1px #465c8b;
+}
+input:not(:checked):hover + .word {
+    color: rgb(66, 97, 150); 
+}

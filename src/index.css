@@ -3,6 +3,11 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #fff;
+}
+
+.unselectable {
+  user-select: none;
 }
 
 
