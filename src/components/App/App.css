@@ -1,6 +1,12 @@
-.App-container {
+.column-container {
   display: flex;
   justify-content: space-evenly;
+  max-width: 825px;
+}
+
+.content-container {
+  display: flex;
+  justify-content: center;
 }
 
 .App-header {

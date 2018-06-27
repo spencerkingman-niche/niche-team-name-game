@@ -66,6 +66,7 @@ class Column extends Component {
                                             onChange={ this.handleOptionChange } />
                                         <Item 
                                             person={ person }
+                                            numOfPeople={ people.length }
                                             type={ type } 
                                             noneChecked={ this.state.selectedOption === '' }/>
                                     </label>

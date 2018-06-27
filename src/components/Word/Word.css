@@ -1,6 +1,9 @@
 .word {
-    font-size: 1.5em;
     align-self: stretch;        
+    font-size: 1.5em;
+    padding: 25px 5px;
+    min-width: 120px;
+    text-align: center;
 }
 
 .word__firstName {

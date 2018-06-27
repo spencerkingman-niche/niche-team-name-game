@@ -4,7 +4,7 @@ import Column from '../../components/Column/Column'
 import Divider from '../../components/Divider/Divider'
 import './App.css';
 
-const PEOPLE_PER_SHUFFLE = 7
+const PEOPLE_PER_SHUFFLE = 5
 
 class App extends Component {
   constructor(props) {
@@ -80,28 +80,29 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title unselectable">NICHE NAME GAME</h1>
         </header>
-        <div className="App-container">
-          <Column
-            type="photo"
-            people={ this.state.activePeople }
-            onChange={ this.handleSelection } 
-            />
-          <Divider/>
-          <Column
-            type="firstName"
-            people={ this.state.activePeople }
-            onChange={ this.handleSelection } 
-            />
-          <Divider/>
-          <Column
-            type="lastName"
-            people={ this.state.activePeople }
-            onChange={ this.handleSelection } 
+        <div className="content-container">
+          <div className="column-container">
+            <Column
+              type="photo"
+              people={ this.state.activePeople }
+              onChange={ this.handleSelection } 
+              />
+            <Divider/>
+            <Column
+              type="firstName"
+              people={ this.state.activePeople }
+              onChange={ this.handleSelection } 
+              />
+            <Divider/>
+            <Column
+              type="lastName"
+              people={ this.state.activePeople }
+              onChange={ this.handleSelection } 
             />
         </div>
-      </div>
-    );
-  }
+      </div>'
+    </div>
+  )}
 }
 
 export default App;

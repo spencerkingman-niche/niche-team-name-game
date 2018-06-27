@@ -5,5 +5,28 @@
 }
 
 .item {
-    transition: all .1s;
+    transition: all .2s;
+}
+
+.photo--group-of-1,
+.photo--group-of-2,
+.photo--group-of-3,
+.photo--group-of-4,
+.photo--group-of-5 {
+    height: 16vh;
+}
+.photo--group-of-6 {
+    height: 13vh;
+}
+.photo--group-of-7 {
+    height: 11vh;
+}
+.photo--group-of-8 {
+    height: 9vh;
+}
+.photo--group-of-9 {
+    height: 8vh;
+}
+.photo--group-of-10 {
+    height: 7vh;
 }
