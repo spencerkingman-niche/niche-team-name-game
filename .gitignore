@@ -1,7 +1,7 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # personal info
-/constants/team.js
+/src/constants/team.js
 
 # dependencies
 /node_modules
