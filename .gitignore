@@ -2,6 +2,7 @@
 
 # personal info
 /src/constants/team.js
+/src/images
 
 # dependencies
 /node_modules
