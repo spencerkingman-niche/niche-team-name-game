@@ -73,6 +73,7 @@ class Column extends Component {
                                 </div>
                             )
                         }
+                        return null
                     })}
                 </form>
         )
