@@ -33,7 +33,6 @@ class App extends Component {
   getNewActivePeople() {
     const { stillToBeMatchedPeople } = this.state
     const shuffledTeam = stillToBeMatchedPeople.concat().sort(() => .5 - Math.random()) // shuffle  
-    console.log(shuffledTeam)
     return shuffledTeam.slice(0, PEOPLE_PER_SHUFFLE) //get sub-array of first n elements AFTER shuffle
   }
 
@@ -51,7 +50,6 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    console.log(this.state.activePeople.length)
     if (this.state.activePeople.length === 0) {
       this.setState({activePeople: this.getNewActivePeople()})
     }
@@ -69,9 +67,9 @@ class App extends Component {
     const { activePeople, stillToBeMatchedPeople } = this.state
     this.setState({
       activePeople: activePeople.filter(activePerson => activePerson.src !== match),
-      stillToBeMatchedPeople: stillToBeMatchedPeople.filter(activePerson => activePerson.src !== match)
+      stillToBeMatchedPeople: stillToBeMatchedPeople.filter(activePerson => activePerson.src !== match),
+      selections: this.initializeSelections()
     })
-    this.initializeSelections()
   }
 
   render() {

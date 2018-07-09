@@ -5,7 +5,7 @@ import './Photo.css'
 
 const Photo = ({ person, noneChecked, numOfPeople }) => {
     const file = require(`../../images/${person.src}`)
-    return <img className={`item photo${noneChecked ? ' none-checked' : ''} photo--group-of-${numOfPeople}`} src={file} alt=''/>
+    return <img className={`item unselectable photo${noneChecked ? ' none-checked' : ''} photo--group-of-${numOfPeople}`} src={file} alt=''/>
 }
  
 Photo.propTypes = {

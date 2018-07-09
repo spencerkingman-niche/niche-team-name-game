@@ -37,6 +37,11 @@ class Column extends Component {
                 shuffledActivePeople: this.shuffleActivePeople(),
             })
         }
+        if (prevProps.people.length > this.props.people.length) {
+            this.setState({
+                selectedOption: '',
+            })
+        }
     }
 
     render() {
@@ -51,10 +56,11 @@ class Column extends Component {
     
         const Item = itemComponents[type]
         return (
-                <form className={ `column column__${type}`}>
-                    { this.state.shuffledActivePeople.map(person => {
-                        if (people.indexOf(person) !== -1) {
-                            return (
+            <form className={ `column column__${type}`}>
+                { this.state.shuffledActivePeople.map(person => {
+                    if (people.indexOf(person) !== -1) {
+                        return (
+
                                 <div 
                                     key={ person.src }
                                     className="radio" >
@@ -71,11 +77,12 @@ class Column extends Component {
                                             noneChecked={ this.state.selectedOption === '' }/>
                                     </label>
                                 </div>
-                            )
-                        }
-                        return null
-                    })}
-                </form>
+
+                        )
+                    }
+                    return null
+                })}
+            </form>
         )
     }
     
@@ -84,7 +91,11 @@ class Column extends Component {
 Column.propTypes = {
     type: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
-    people: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    people: PropTypes.arrayOf(PropTypes.shape({})),
 }
  
+Column.defaultProps = {
+    people: [],
+}
+
 export default Column;
