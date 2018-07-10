@@ -10,6 +10,13 @@ body {
   user-select: none;
 }
 
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
 
 /* font-family: 'Lora', serif;
 font-weight: 400;
