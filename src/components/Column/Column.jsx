@@ -37,11 +37,11 @@ class Column extends Component {
                 shuffledActivePeople: this.shuffleActivePeople(),
             })
         }
-        if (prevProps.people.length > this.props.people.length) {
-            this.setState({
-                selectedOption: '',
-            })
-        }
+        // if (prevProps.people.length > this.props.people.length) {
+        //     this.setState({
+        //         selectedOption: '',
+        //     })
+        // }
     }
 
     render() {

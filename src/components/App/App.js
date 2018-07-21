@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-
 import { TEAM } from '../../constants/team'
 import Column from '../../components/Column/Column'
 import Divider from '../../components/Divider/Divider'
-
 import './App.css';
 
 const PEOPLE_PER_SHUFFLE = 5
@@ -52,7 +50,7 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.activePeople.length === 0) {
+    if (this.state.activePeople.length === 0 && this.state.stillToBeMatchedPeople.length !== 0) {
       this.setState({activePeople: this.getNewActivePeople()})
     }
   }
@@ -99,9 +97,13 @@ class App extends Component {
               people={ this.state.activePeople }
               onChange={ this.handleSelection } 
             />
+          </div>
+            <div className={`game-over-text__wrap ${this.state.stillToBeMatchedPeople.length === 0 ? ' visible' : ' hidden'}`}>
+              <span className="game-over-text">Congratulations! You're Finished.</span>
+              <span className="game-over-text game-over-text--small ">(except for Carrie Law, who has no photo, and the new people).</span>
+            </div>
         </div>
       </div>
-    </div>
   )}
 }
 
