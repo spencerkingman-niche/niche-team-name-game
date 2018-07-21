@@ -28,4 +28,17 @@ A user is more likely to find someone that they know in a larger set. A user is 
 
 This app probably wouldn't have been built if there had not been a relatively easy way to get the names and photos. I knew that the photos were on a webpage and could be saved individually, but I did not want to do that. I knew that the names could all be typed out as well, but I did not want to do that. 
 
-I went to https://about.niche.com/team and did a File > Save in the browser. This downloaded a folder called `Working At Niche – Niche_files`. That folder had all of the photos right there!
+I went to https://about.niche.com/team and did a File > Save in the browser. This downloaded a folder called `Working At Niche – Niche_files`. That folder had all of the photos right there! And luckily enough, the file names were all in the format: [FIRSTNAME]-[LASTNAME].jpg
+
+I sorted the filelist by type and deleted everything I didn't need. Then I did a Select All (in the Finder), Copy, Paste (in SublimeText). And there was a list of everyone's name, on separate lines. Using multiple-selection, I was able to duplicate these file-names, and format them (without too much typing) as an array of objects like below.
+    
+    { 
+        firstName: 'Aaron',
+        lastName: 'Miller',
+        src: 'Aaron-Miller.jpg',
+        title: '',
+    }, 
+
+# Part 3: The React Boilerplate
+
+Getting the 
