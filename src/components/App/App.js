@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+
 import { TEAM } from '../../constants/team'
 import Column from '../../components/Column/Column'
 import Divider from '../../components/Divider/Divider'
+
 import './App.css';
 
 const PEOPLE_PER_SHUFFLE = 5
@@ -98,7 +100,7 @@ class App extends Component {
               onChange={ this.handleSelection } 
             />
         </div>
-      </div>'
+      </div>
     </div>
   )}
 }
