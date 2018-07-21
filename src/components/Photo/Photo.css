@@ -13,20 +13,20 @@
 .photo--group-of-3,
 .photo--group-of-4,
 .photo--group-of-5 {
-    height: 16vh;
+    height: 14vh;
 }
 .photo--group-of-6 {
-    height: 13vh;
-}
-.photo--group-of-7 {
     height: 11vh;
 }
-.photo--group-of-8 {
+.photo--group-of-7 {
     height: 9vh;
 }
-.photo--group-of-9 {
+.photo--group-of-8 {
     height: 8vh;
 }
-.photo--group-of-10 {
+.photo--group-of-9 {
     height: 7vh;
+}
+.photo--group-of-10 {
+    height: 6vh;
 }
