@@ -24,6 +24,8 @@ Initially, I had in mind something like the game Memory, where you have a grid o
 
 A user is more likely to find someone that they know in a larger set. A user is more likely to guess correctly the people that they don't know as the scrambled set shrinks. 
 
+I also liked the random juxtaposition of names and faces, which is kind of funny, and gives a little interest to the game, even if you already know everybody's name.
+
 # Part 2: Getting the Photos/Names
 
 This app probably wouldn't have been built if there had not been a relatively easy way to get the names and photos. I knew that the photos were on a webpage and could be saved individually, but I did not want to do that. I knew that the names could all be typed out as well, but I did not want to do that. 
@@ -41,4 +43,6 @@ I sorted the filelist by type and deleted everything I didn't need. Then I did a
 
 # Part 3: The React Boilerplate
 
-Getting the 
+I have become accustomed to the Babel/React/Node development Environment that we have at work, and I knew I wanted as much of that environment as possible without having to do any configuration. So I just used the Create-React-App boilerplate and I was up in a few minutes. 
+
+No Less, no linter, no other things we have at work, but it is always a good exercise to shift the paradigm and learn to not take those things for granted. 
