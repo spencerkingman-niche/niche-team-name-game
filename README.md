@@ -46,3 +46,11 @@ I sorted the filelist by type and deleted everything I didn't need. Then I did a
 I have become accustomed to the Babel/React/Node development Environment that we have at work, and I knew I wanted as much of that environment as possible without having to do any configuration. So I just used the Create-React-App boilerplate and I was up in a few minutes. 
 
 No Less, no linter, no other things we have at work, but it is always a good exercise to shift the paradigm and learn to not take those things for granted. 
+
+# Part 4: React Design Choices
+
+# Part 5: Visual Design Choices
+
+# Part 6: Getting it to Work
+
+# Part 7: Tweaks
