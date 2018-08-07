@@ -100,7 +100,7 @@ class App extends Component {
           </div>
             <div className={`game-over-text__wrap ${this.state.stillToBeMatchedPeople.length === 0 ? ' visible' : ' hidden'}`}>
               <span className="game-over-text">Congratulations! You're Finished.</span>
-              <span className="game-over-text game-over-text--small ">(except for Carrie Law, who has no photo, and the new people).</span>
+              <span className="game-over-text game-over-text--small ">(except for the newest of new people).</span>
             </div>
         </div>
       </div>
