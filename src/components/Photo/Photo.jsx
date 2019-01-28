@@ -10,7 +10,7 @@ const Photo = ({ person, noneChecked, numOfPeople }) => {
  
 Photo.propTypes = {
     noneChecked: PropTypes.bool.isRequired,
-    numOfPeople: PropTypes.num,
+    numOfPeople: PropTypes.number,
     person: PropTypes.shape({}).isRequired,
 }
 

@@ -10,7 +10,7 @@ class Column extends Component {
         super(props) 
         this.state = {
             selectedOption: '',
-            shuffledActivePeople: this.shuffleActivePeople(),
+            shuffledActivePeople: [],
         }
         this.handleOptionChange = this.handleOptionChange.bind(this)
         this.shuffleActivePeople = this.shuffleActivePeople.bind(this)
@@ -43,6 +43,10 @@ class Column extends Component {
         //     })
         // }
     }
+
+// componentDidMount() {
+//     this.shuffleActivePeople.bind(this)
+// }
 
     render() {
         const { type, people } = this.props
