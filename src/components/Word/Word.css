@@ -1,17 +1,16 @@
 .word {
-    align-self: stretch;        
-    font-size: 1.5em;
-    padding: 25px 5px;
-    min-width: 120px;
-    text-align: center;
+  font-size: 1.5em;
+  /* padding: 25px 5px; */
+  min-width: 120px;
+  text-align: center;
 }
 
 .word__firstName {
-    font-family: 'Lora', serif;
-    font-weight: 400;
-    font-style: italic;
+  font-family: "Lora", serif;
+  font-weight: 400;
+  font-style: italic;
 }
 
 .word__lastName {
-    font-family: 'EB Garamond', serif; 
+  font-family: "EB Garamond", serif;
 }

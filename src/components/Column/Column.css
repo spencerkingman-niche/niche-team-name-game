@@ -1,36 +1,37 @@
 .column {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 15px;
 }
 .radio {
-    display: inline-block;
-    margin-right: 15px;
+  /* border: 1px solid red; */
+  display: inline-flex;
+  /* margin-right: 15px; */
 }
 input {
-    visibility:hidden;
+  display: none;
 }
 label {
-    cursor: pointer;
+  cursor: pointer;
 }
 input:not(:checked) + .item {
-    opacity: 0.33;
+  opacity: 0.33;
 }
 input:not(:checked) + .none-checked {
-    opacity: 1;
+  opacity: 1;
 }
 input:checked + .photo {
-    /* box-shadow: 2px 2px 2px #ddd; */
-    box-shadow: 0px 0px 0px 1px #465c8b;
+  /* box-shadow: 2px 2px 2px #ddd; */
+  box-shadow: 0px 0px 0px 1px #465c8b;
 }
 input:checked + .word {
-    font-weight: bold;
-    text-shadow: 2px 2px 2px #e8e8e8;
+  font-weight: bold;
+  text-shadow: 2px 2px 2px #e8e8e8;
 }
 input:hover + .photo {
-    box-shadow: 0px 0px 0px 1px #465c8b;
+  box-shadow: 0px 0px 0px 1px #465c8b;
 }
 input:not(:checked):hover + .word {
-    color: rgb(66, 97, 150); 
+  color: rgb(66, 97, 150);
 }
