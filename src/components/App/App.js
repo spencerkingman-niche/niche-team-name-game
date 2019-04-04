@@ -19,6 +19,7 @@ class App extends Component {
     this.getNewActivePeople = this.getNewActivePeople.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleSelection = this.handleSelection.bind(this);
+    this.handleSkipClick = this.handleSkipClick.bind(this);
     this.initializeSelections = this.initializeSelections.bind(this);
     this.removeMatch = this.removeMatch.bind(this);
   }
@@ -56,6 +57,19 @@ class App extends Component {
     if (this.checkForMatch()) {
       this.removeMatch(selection);
     }
+  }
+
+  handleSkipClick() {
+    const { activePeople, stillToBeMatchedPeople } = this.state;
+    const activePeopleSrc = activePeople.map(activePerson => activePerson.src);
+    console.log(activePeopleSrc);
+    this.setState({
+      activePeople: [],
+      stillToBeMatchedPeople: stillToBeMatchedPeople.filter(
+        activePerson => !activePeopleSrc.includes(activePerson.src)
+      ),
+      selections: this.initializeSelections()
+    });
   }
 
   componentDidMount() {
@@ -96,22 +110,31 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <select
-            className="App-header__select"
-            defaultValue={DEFAULT_PEOPLE_PER_SHUFFLE}
-            onChange={this.handleSelectChange}
-          >
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
+          <div className="App-header__controls-container">
+            <select
+              className="App-header__select"
+              defaultValue={DEFAULT_PEOPLE_PER_SHUFFLE}
+              onChange={this.handleSelectChange}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+            <button
+              type="button"
+              className="App-header__skip-button"
+              onClick={this.handleSkipClick}
+            >
+              Skip Page
+            </button>
+          </div>
           <h1 className="App-title unselectable">NICHE NAME GAME</h1>
         </header>
         <div className="content-container">
