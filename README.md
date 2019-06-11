@@ -16,7 +16,7 @@ Geoff suggested that I put it in writing for myself and others.
 
 One day, in a FE meeting, it became clear to me that I didn't know who the new people were, or their names. I figured that it was probably difficult for them to learn who everyone here is. I got the idea for a little name learning game, based loosely on Memory. I knew that the Niche team page, with it's uniform and up-to-date photos, was a great asset.
 
-I also thought it would be fun to have a little project, all my own, like I used to make before I got this job. The code wouldn't have to conform to any standards. I could just throw it together, not worrying about the form or the details too much. I worked on it for two nights.
+I also thought it would be fun to have a little project, all my own, like I used to make before I got this job. The code wouldn't have to conform to any standards. I could just throw it together, not worrying about the form or the details too much. I worked on it over two days. Updating it for new people takes about 15 minutes.
 
 # Part 1: Concept
 
