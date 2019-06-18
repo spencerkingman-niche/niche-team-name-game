@@ -1,7 +1,6 @@
 #!/bin/bash
 
-rm src/images/*.*
-rm src/constants/team.js
+
 mkdir temp
 cd temp
 curl https://www.niche.com/about/team | grep -oP 'https:\/\/www.niche.com\/about\/wp-content\/uploads\/\d*\/\d*[^.]*.\w\w\w' | xargs wget
@@ -26,6 +25,11 @@ do
         fi
     fi
 done <names.txt
+
+#SPECIAL CASE as she is not on the team page, assumes her pic is in images folder
+echo ',{firstName: "Carrie", lastName: "Law", src: "Carrie Potter.jpg", title: ""}' >> team.js
+#End Special
+
 echo '];' >> team.js
 rm names.txt
 
