@@ -1,7 +1,7 @@
 .column-container {
   display: flex;
   justify-content: space-evenly;
-  max-width: 825px;
+  min-width: 100px;
 }
 
 .content-container {
@@ -18,13 +18,23 @@
   justify-content: space-between;
 }
 
+.App-header__label {
+  font-size: 1em;
+  font-family: monospace;
+  font-weight: normal;
+  margin: 0;
+  display: inline-flex;
+  align-self: flex-start;
+  margin-left: 25px;
+}
+
 .App-header__select {
   align-self: flex-start;
+  margin-left: 5px;
 }
 
 .App-header__skip-button {
   align-self: flex-start;
-  margin-left: 15px;
 }
 
 .App-title {
@@ -32,15 +42,6 @@
   font-family: monospace;
   font-weight: normal;
   margin: 0;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .game-over-text__wrap {

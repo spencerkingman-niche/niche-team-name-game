@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { TEAM } from "../../constants/team";
 import Column from "../../components/Column/Column";
 import Divider from "../../components/Divider/Divider";
+import LastCorrect from "../../components/LastCorrect/LastCorrect";
 import "./App.css";
 
 const DEFAULT_PEOPLE_PER_SHUFFLE = 5;
@@ -13,7 +14,8 @@ class App extends Component {
       peoplePerShuffle: DEFAULT_PEOPLE_PER_SHUFFLE,
       stillToBeMatchedPeople: TEAM,
       activePeople: [],
-      selections: this.initializeSelections()
+      selections: this.initializeSelections(),
+      lastCorrect: {},
     };
     this.checkForMatch = this.checkForMatch.bind(this);
     this.getNewActivePeople = this.getNewActivePeople.bind(this);
@@ -25,12 +27,28 @@ class App extends Component {
   }
 
   checkForMatch() {
-    const { selections } = this.state;
-    const potentialMatch = selections.photo;
-    for (let category in selections) {
-      if (selections[category] !== potentialMatch) return false;
+    const { activePeople, selections } = this.state;
+    if (!selections.photo || !selections.firstName || !selections.lastName) {
+      return false
     }
-    return true;
+
+    const potentialMatchBasedOnPhoto = activePeople.filter(
+      activePerson => activePerson.src === selections.photo
+    )[0]
+
+    const potentialMatchBasedOnFirstName = activePeople.filter(
+      activePerson => activePerson.src === selections.firstName
+    )[0] 
+
+    const potentialMatchBasedOnLastName = activePeople.filter(
+      activePerson => activePerson.src === selections.lastName
+    )[0] 
+
+    if (potentialMatchBasedOnPhoto.firstName === potentialMatchBasedOnFirstName.firstName && potentialMatchBasedOnPhoto.lastName === potentialMatchBasedOnLastName.lastName) {
+      return true
+    }
+
+    return false;
   }
 
   getNewActivePeople() {
@@ -51,18 +69,17 @@ class App extends Component {
   }
 
   handleSelection(selection, type) {
-    const stateObject = this.state;
-    stateObject.selections[type] = selection;
-    this.setState(stateObject);
+    const stateObj = this.state;
+    stateObj.selections[type] = selection;
+    this.setState(stateObj);
     if (this.checkForMatch()) {
-      this.removeMatch(selection);
+      this.removeMatch(stateObj.selections.photo);
     }
   }
 
   handleSkipClick() {
     const { activePeople, stillToBeMatchedPeople } = this.state;
     const activePeopleSrc = activePeople.map(activePerson => activePerson.src);
-    console.log(activePeopleSrc);
     this.setState({
       activePeople: [],
       stillToBeMatchedPeople: stillToBeMatchedPeople.filter(
@@ -94,11 +111,27 @@ class App extends Component {
   }
 
   removeMatch(match) {
+    console.log("TCL: App -> removeMatch -> match", match)
     const { activePeople, stillToBeMatchedPeople } = this.state;
+    console.log("TCL: App -> removeMatch -> stillToBeMatchedPeople", stillToBeMatchedPeople)
+    console.log("TCL: App -> removeMatch -> activePeople", activePeople)
+    console.log(activePeople.filter(
+      activePerson => activePerson.src !== match
+    ))
+    console.log(activePeople.filter(
+      activePerson => activePerson.src === match
+    )[0])
+    console.log(stillToBeMatchedPeople.filter(
+      activePerson => activePerson.src !== match
+    ))
+    
     this.setState({
       activePeople: activePeople.filter(
         activePerson => activePerson.src !== match
       ),
+      lastCorrect: activePeople.filter(
+        activePerson => activePerson.src === match
+      )[0],
       stillToBeMatchedPeople: stillToBeMatchedPeople.filter(
         activePerson => activePerson.src !== match
       ),
@@ -107,10 +140,19 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.selections)
     return (
       <div className="App">
         <header className="App-header">
           <div className="App-header__controls-container">
+            <button
+              type="button"
+              className="App-header__skip-button"
+              onClick={this.handleSkipClick}
+            >
+              Skip This Page
+            </button>
+            <p className="App-header__label unselectable">Photos Per Page: </p>
             <select
               className="App-header__select"
               defaultValue={DEFAULT_PEOPLE_PER_SHUFFLE}
@@ -127,36 +169,32 @@ class App extends Component {
               <option value="9">9</option>
               <option value="10">10</option>
             </select>
-            <button
-              type="button"
-              className="App-header__skip-button"
-              onClick={this.handleSkipClick}
-            >
-              Skip Page
-            </button>
           </div>
           <h1 className="App-title unselectable">NICHE NAME GAME</h1>
         </header>
         <div className="content-container">
-          <div className="column-container">
-            <Column
-              type="photo"
-              people={this.state.activePeople}
-              onChange={this.handleSelection}
-            />
-            <Divider />
-            <Column
-              type="firstName"
-              people={this.state.activePeople}
-              onChange={this.handleSelection}
-            />
-            <Divider />
-            <Column
-              type="lastName"
-              people={this.state.activePeople}
-              onChange={this.handleSelection}
-            />
-          </div>
+          {this.state.stillToBeMatchedPeople.length !== 0 &&
+            <div className="column-container">
+              <Column
+                type="photo"
+                people={this.state.activePeople}
+                onChange={this.handleSelection}
+              />
+              <Divider />
+              <Column
+                type="firstName"
+                people={this.state.activePeople}
+                onChange={this.handleSelection}
+              />
+              <Divider />
+              <Column
+                type="lastName"
+                people={this.state.activePeople}
+                onChange={this.handleSelection}
+              />
+              <LastCorrect lastCorrect={this.state.lastCorrect}/>
+            </div>
+          }
           <div
             className={`game-over-text__wrap ${
               this.state.stillToBeMatchedPeople.length === 0

@@ -1,7 +1,7 @@
 .word {
   font-size: 1.5em;
   padding: 20px 0;
-  min-width: 120px;
+  width: 125px;
   text-align: center;
 }
 

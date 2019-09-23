@@ -1,9 +1,23 @@
 .column {
+  align-items: flex-end;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding: 15px;
 }
+
+.column__firstName {
+  width: 125px;
+}
+
+.column__lastName {
+  width: 125px;
+}
+
+.column__photo {
+  width: 211px;
+}
+
 .radio {
   /* border: 1px solid red; */
   display: inline-flex;

@@ -18,7 +18,8 @@ class Column extends Component {
 
     handleOptionChange(e) {
         this.setState({
-            selectedOption: e.target.value
+            selectedOption: e.target.value,
+            noneChecked: false,
         })
         this.props.onChange(e.target.value, this.props.type)
     }
@@ -26,6 +27,7 @@ class Column extends Component {
     shuffleActivePeople() {
         this.setState({
             selectedOption: '',
+            noneChecked: false,
         })
         const shuffledActivePeople = this.props.people.concat().sort(() => .5 - Math.random())
         return shuffledActivePeople
@@ -35,13 +37,15 @@ class Column extends Component {
         if (prevProps.people.length === 0) {
             this.setState({
                 shuffledActivePeople: this.shuffleActivePeople(),
+                noneChecked: true,
             })
         }
-        // if (prevProps.people.length > this.props.people.length) {
-        //     this.setState({
-        //         selectedOption: '',
-        //     })
-        // }
+        if (prevProps.people.length > this.props.people.length) {
+            this.setState({
+                selectedOption: '',
+                noneChecked: false,
+            })
+        }
     }
 
 // componentDidMount() {
@@ -78,7 +82,7 @@ class Column extends Component {
                                             person={ person }
                                             numOfPeople={ people.length }
                                             type={ type } 
-                                            noneChecked={ this.state.selectedOption === '' }/>
+                                            noneChecked={ this.state.noneChecked }/>
                                     </label>
                                 </div>
 
