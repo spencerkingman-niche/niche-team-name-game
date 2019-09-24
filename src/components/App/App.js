@@ -111,19 +111,7 @@ class App extends Component {
   }
 
   removeMatch(match) {
-    console.log("TCL: App -> removeMatch -> match", match)
     const { activePeople, stillToBeMatchedPeople } = this.state;
-    console.log("TCL: App -> removeMatch -> stillToBeMatchedPeople", stillToBeMatchedPeople)
-    console.log("TCL: App -> removeMatch -> activePeople", activePeople)
-    console.log(activePeople.filter(
-      activePerson => activePerson.src !== match
-    ))
-    console.log(activePeople.filter(
-      activePerson => activePerson.src === match
-    )[0])
-    console.log(stillToBeMatchedPeople.filter(
-      activePerson => activePerson.src !== match
-    ))
     
     this.setState({
       activePeople: activePeople.filter(
@@ -140,7 +128,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.selections)
     return (
       <div className="App">
         <header className="App-header">
