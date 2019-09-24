@@ -5,7 +5,7 @@
 }
 
 .item {
-    transition: opacity 0.2s ease;
+    transition: opacity 0.1s ease;
 }
 
 .photo--group-of-1,

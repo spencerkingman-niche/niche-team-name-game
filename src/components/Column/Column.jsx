@@ -43,7 +43,7 @@ class Column extends Component {
         if (prevProps.people.length > this.props.people.length) {
             this.setState({
                 selectedOption: '',
-                noneChecked: false,
+                noneChecked: true,
             })
         }
     }
