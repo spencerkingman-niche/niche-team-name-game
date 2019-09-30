@@ -1,11 +1,8 @@
 #!/bin/bash
-
-
 mkdir temp
 cd temp
-curl https://www.niche.com/about/team | grep -oP 'https:\/\/www.niche.com\/about\/wp-content\/uploads\/\d*\/\d*[^.]*.\w\w\w' | xargs wget
-find -type f -name 'slideshow-*.jpg' | xargs rm
-find -type f -name 'team*.jpg' | xargs rm
+curl http://our.niche.team/about/our-team/ | grep -oP 'http:\/\/our.niche.team\/wp-content\/uploads\/\d*\/\d*[^.]*.\w\w\w' | xargs wget
+find -type f -name '*mural*' | xargs rm
 ls > names.txt
 echo 'export const TEAM = [' >> team.js
 firstPass="true"
@@ -26,21 +23,16 @@ do
     fi
 done <names.txt
 
-#SPECIAL CASE as she is not on the team page, assumes her pic is in images folder
-echo ',{firstName: "Carrie", lastName: "Law", src: "Carrie Potter.jpg", title: ""}' >> team.js
-#End Special
-
 echo '];' >> team.js
 rm names.txt
 
 #SPECIAL CASE NAMES
-sed -i 's/firstName: "Juan", lastName: "Angel",/firstName: "Juan", lastName: "Angel Rojas",/g' team.js
-sed -i 's/firstName: "omid", lastName: "",/firstName: "Omid", lastName: "Gohari",/g' team.js
+#sed -i 's/firstName: "Juan", lastName: "Angel",/firstName: "Juan", lastName: "Angel Rojas",/g' team.js
+
 #Node can't understand the accent on the filename
 mv Kelly-Munié.jpg Kelly-Munie.jpg
 sed -i 's/firstName: "Kelly", lastName: "Munie", src: "Kelly-Munié.jpg"/firstName: "Kelly", lastName: "Munié", src: "Kelly-Munie.jpg"/g' team.js
-#Fixes a current typo on file name
-sed -i 's/firstName: "Mehan",/firstName: "Meghan",/g' team.js
+
 
 #END SPECIAL CASE NAMES
 
