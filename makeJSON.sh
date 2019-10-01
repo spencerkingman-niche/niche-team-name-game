@@ -3,16 +3,23 @@ mkdir temp
 cd temp
 curl http://our.niche.team/about/our-team/ | grep -oP 'http:\/\/our.niche.team\/wp-content\/uploads\/\d*\/\d*[^.]*.\w\w\w' | xargs wget
 find -type f -name '*mural*' | xargs rm
+find -type f -name '*Headshot*' | xargs rm
 ls > names.txt
 echo 'export const TEAM = [' >> team.js
 firstPass="true"
+PAGE=$(curl http://our.niche.team/about/our-team/)
 while read filename
 do
-    echo $filename
+    #echo $filename
     if [ "$filename" != "names.txt" ]
     then
-        FIRSTNAME=$(echo ${filename} | grep -oP '^\w+')
-        LASTNAME=$(echo ${filename} | grep -oP '\-[A-Z,a-z]+' | head -1 | grep -oP '[A-Z,a-z]*')
+        RAWLINE=$(echo ${PAGE} | grep -oP 'http:\/\/our.niche.team\/wp-content\/uploads\/\d*\/\d*\/'${filename}'" alt="[^>]+')
+        echo $RAWLINE
+        CLEANNAME=$(echo ${RAWLINE} | grep -oP '\w+ [^"]+')
+        echo $CLEANNAME
+        FIRSTNAME=$(echo ${CLEANNAME} | grep -oP '^\w+')
+        echo $FIRSTNAME
+        LASTNAME=$(echo ${CLEANNAME} | grep -oP ' .+' | head -1 | grep -oP '.+')
         if [ "$firstPass" == true ]
         then
             echo '{firstName: "'${FIRSTNAME}'", lastName: "'${LASTNAME}'", src: "'${filename}'", title: ""}' >> team.js
