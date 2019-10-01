@@ -20,7 +20,7 @@ COPY . /app
 
 FROM code AS final
 
-EXPOSE 3001
+EXPOSE 3005
 
 # Perform any further action as the unprivileged "node" user.
 USER node
