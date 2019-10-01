@@ -38,7 +38,7 @@ rm names.txt
 
 #Node can't understand the accent on the filename
 mv Kelly-Munié.jpg Kelly-Munie.jpg
-sed -i 's/firstName: "Kelly", lastName: "Munie", src: "Kelly-Munié.jpg"/firstName: "Kelly", lastName: "Munié", src: "Kelly-Munie.jpg"/g' team.js
+sed -i 's/firstName: "Kelly", lastName: " Munie", src: "Kelly-Munié.jpg"/firstName: "Kelly", lastName: "Munié", src: "Kelly-Munie.jpg"/g' team.js
 
 
 #END SPECIAL CASE NAMES
