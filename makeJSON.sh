@@ -14,11 +14,8 @@ do
     if [ "$filename" != "names.txt" ]
     then
         RAWLINE=$(echo ${PAGE} | grep -oP 'http:\/\/our.niche.team\/wp-content\/uploads\/\d*\/\d*\/'${filename}'" alt="[^>]+')
-        echo $RAWLINE
         CLEANNAME=$(echo ${RAWLINE} | grep -oP '\w+ [^"]+')
-        echo $CLEANNAME
         FIRSTNAME=$(echo ${CLEANNAME} | grep -oP '^\w+')
-        echo $FIRSTNAME
         LASTNAME=$(echo ${CLEANNAME} | grep -oP ' .+' | head -1 | grep -oP '.+')
         if [ "$firstPass" == true ]
         then
