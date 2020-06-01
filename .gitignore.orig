@@ -1,11 +1,8 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # personal info
-<<<<<<< HEAD
 /src/constants/team.js
-=======
-/constants
->>>>>>> d8883f2c693a1805bf3c5b95c1a5642926786dca
+/src/images
 
 # dependencies
 /node_modules

@@ -1,0 +1,21 @@
+version: "3.7"
+x-dns:
+  &dns
+  dns:
+    - 192.168.0.252
+    - 192.168.0.90
+    - 8.8.8.8
+  dns_search:
+    - collegeprowler.com
+services:
+  namegame:
+    <<: *dns
+    image: ${USER:?USER}/namegame:latest
+    container_name: namegame
+    networks:
+      - namegame
+    ports:
+      - 3005:3005
+networks:
+  namegame:
+    name: namegame

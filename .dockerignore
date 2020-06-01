@@ -1,0 +1,12 @@
+#Docker
+Dockerfile
+Makefile
+.dockerignore
+
+
+# Git
+.git
+.gitignore
+
+#Scripts
+makeJSON.sh
